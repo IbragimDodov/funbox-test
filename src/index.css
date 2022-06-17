@@ -70,13 +70,12 @@ body {
   cursor: pointer;
 }
 
-
-.card__wrapper:hover {
-  border: 4px solid #2EA8E6;
+.card__label--hover:hover {
+  background: #2EA8E6;
 }
 
-.card__wrapper:hover .card__label {
-  background: #2EA8E6;
+.card__wrapper--hover:hover {
+  border: 4px solid #2EA8E6;
 }
 
 

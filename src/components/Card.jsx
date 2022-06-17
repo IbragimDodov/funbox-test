@@ -11,7 +11,7 @@ function Card({ pretitle, title, subtitle, descr, image, weight, link, selectedD
   return (
     <div className={`card ${available ? '' : 'card--unavailable'}`}>
       <div
-        className={`card__wrapper ${selected ? 'card__wrapper--selected' : ''}`}
+        className={`card__wrapper ${selected ? 'card__wrapper--selected' : 'card__wrapper--hover'}`}
         onClick={handleSelect}>
         <div className="card__content">
           <div className="card__pretitle">{pretitle}</div>
@@ -28,7 +28,7 @@ function Card({ pretitle, title, subtitle, descr, image, weight, link, selectedD
 
         <img className="card__img" src={image} alt="cat" />
 
-        <div className="card__label">
+        <div className={`card__label ${selected ? '' : 'card__label--hover'}`}>
           {weight}
           <span>кг</span>
         </div>
