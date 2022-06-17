@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './Card';
-// import data from '../../public/assets/data.json'
 
 function Cards() {
   const [cards, setCards] = React.useState([]);
