@@ -70,17 +70,5 @@
     "link": "/#",
     "selectedDescr": "Филе из цыплят с трюфелями в бульоне.",
     "available": true
-  },
-  { 
-    "id": "7",
-    "pretitle": "Сказочное заморское яство",
-    "title": "Нямушка",
-    "subtitle": "с фуа-гра",
-    "descr": ["10 порций", "мышь в подарок"],
-    "image": "./assets/img/cat.png",
-    "weight": "0,5",
-    "link": "/#",
-    "selectedDescr": "Печень утки разварная с артишоками.",
-    "available": true
   }
 ]
