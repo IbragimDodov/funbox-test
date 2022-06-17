@@ -1,32 +1,57 @@
-import React from 'react'
+import React from 'react';
 
-function Card() {
+function Card({ pretitle, title, subtitle, descr, image, weight, link, selectedDescr, available }) {
+  const [selected, setSelected] = React.useState(false);
+  const [selectedHover, setSelectedHover] = React.useState(false);
+
+  const handleSelect = () => {
+    setSelected(!selected);
+  };
+
   return (
-    <div className="card__wrapper">
-      <div className="card">
-        <div className="descr">
-          <span className='main__prev'>Сказочное заморское яство</span>
-          <h1 className='main__title'>
-            Нямушка
-          </h1>
-          <h2 className='main__subtitle'>с фуа-гра</h2>
-          <span className='main__prev'>
-            10 порций <br/>
-            мышь в подарок
-          </span>
+    <div className={`card ${available ? '' : 'card--unavailable'}`}>
+      <div
+        className={`card__wrapper ${selected ? 'card__wrapper--selected' : ''}`}
+        onClick={handleSelect}>
+        <div className="card__content">
+          <div className="card__pretitle">{pretitle}</div>
+          <h2 className="card__header">
+            <span className="card__title"> {title} </span>
+            <span className="card__subtitle"> {subtitle} </span>
+          </h2>
+          <p className="card__descr">
+            {descr.map((item, index) => {
+              return <span key={index}> {item} </span>;
+            })}
+          </p>
         </div>
-        {/* <img className='card__img' src='../assets/img/Object.png' alt="cat" /> */}
-        <div className='card__label'>
-          0,5
+
+        <img className="card__img" src={image} alt="cat" />
+
+        <div className="card__label">
+          {weight}
           <span>кг</span>
         </div>
       </div>
 
-      <span className='card-buy'>
-        Чего сидишь? Порадуй котэ, <a href="#">купи.</a> 
-      </span>
+      <div className="card__buy">
+        {available ? (
+          selected ? (
+            selectedDescr
+          ) : (
+            <span>
+              Чего сидишь? Порадуй котэ,{' '}
+              <a onClick={handleSelect} href={link}>
+                купи.
+              </a>
+            </span>
+          )
+        ) : (
+          <span>Печалька, {subtitle} закончился.</span>
+        )}
+      </div>
     </div>
-  )
+  );
 }
 
-export default Card
+export default Card;

@@ -1,17 +1,23 @@
+@font-face {
+  font-family: 'Trebuchet MS';
+  src: local('Trebuchet MS'), url('./fonts/trebuchetms.ttf') format('ttf');
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
 
-  /* font-family: 'Anek Malayalam', sans-serif; */
-  font-family: 'Exo 2', sans-serif;
+  font-family: 'Trebuchet MS', sans-serif;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  background-image: url(assets/img/Pattern.png);
+  background-image: url(../public/assets/img/Pattern.png);
   background-size: cover;
   background-repeat: no-repeat;
-
-  box-sizing: border-box;
 }
 
 .App {
@@ -30,44 +36,51 @@ body {
   margin-top: 36px;
 }
 
-main {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+.cards {
+  padding: 0 1em;
+  max-width: 1152px;
+  margin: 0 auto;
 }
 
-.card__wrapper {
-  text-align: center;
-
-  margin-bottom: 50px;
+.cards__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 -40px;
+  
 }
 
 .card {
-  position: relative;
-  width: 320px;
-  height: 480px;
-
-  background-image: url(assets/img/Object.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-
-  background-color: #f2f2f2;
-
-  border: 4px solid #1698D9;
-  border-radius: 12px;
+  text-align: center;
+  margin: 0 40px 50px;
 }
 
-.card:hover {
+.card__wrapper {
+  position: relative;
+  min-height: 480px;
+  max-width: 320px;
+  background-color: #f2f2f2;
+  border: 4px solid #1698D9;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+
+.card__wrapper:hover {
   border: 4px solid #2EA8E6;
 }
 
-.card:hover .card__label {
+.card__wrapper:hover .card__label {
   background: #2EA8E6;
 }
 
-.card-buy {
-  font-family: 'Anek Malayalam', sans-serif;
+
+.card__buy {
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -78,40 +91,57 @@ main {
   margin-top: 14px;
 }
 
-.card-buy a {
+.card__buy a {
   color: #1698D9;
   text-decoration: none;
   border-bottom: 1px dashed #1698D9;
 }
 
-.descr {
-  margin-left: 48px;
-  margin-top: 21px;
+.card__content {
+  padding: 21px 48px 0;
+  text-align: start;
 }
 
-.main__prev {
-  font-family: 'Anek Malayalam', sans-serif;
+.card__pretitle {
   font-style: normal;
   font-weight: 700;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 16px;
   color: #666666;
   display: inline-block;
   margin-bottom: 5px;
 }
 
-.main__title {
-  font-family: 'Anek Malayalam', sans-serif;
+.card__header {
+  margin: 0;
+}
+
+.card__descr {
+  font-family: 'Trebuchet MS';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+
+
+color: #666666;
+}
+
+.card__descr span {
+  display: block;
+}
+
+.card__title {
+  font-family: 'Trebuchet MS';
   font-style: normal;
   font-weight: 700;
   font-size: 48px;
-  line-height: 56px;
+  line-height: 1.16666;
   color: #000000;
   margin: 0;
 }
 
-.main__subtitle {
-  font-family: 'Anek Malayalam', sans-serif;
+.card__subtitle {
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
@@ -121,12 +151,14 @@ main {
   margin-bottom: 15px;
 }
 
+.card__img {
+  width: 100%;
+}
+
 .card__label {
   position: absolute;
   bottom: 16px;
   right: 16px;
-
-  font-family: 'Anek Malayalam', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 42px;
@@ -153,4 +185,49 @@ main {
   line-height: 22px;
   text-align: center;
   /* margin-top: 5px; */
+}
+
+
+.card__wrapper--selected {
+  border-color: #D91667;
+}
+.card__wrapper--selected .card__label {
+  background: #D91667;
+}
+
+.card__wrapper--selected-hover {
+  border-color: #E52E7A;
+}
+
+.card__wrapper--selected-hover .card__label {
+  background: #E52E7A;
+}
+
+.card--unavailable {
+  pointer-events: none;
+}
+
+.card--unavailable img {
+  opacity: 0.5;
+}
+
+.card--unavailable .card__wrapper {
+  color: #B3B3B3;
+  border: 4px solid #B3B3B3;
+}
+
+.card--unavailable .card__title,
+.card--unavailable .card__subtitle,
+.card--unavailable .card__pretitle,
+.card--unavailable .card__descr {
+  color: #B3B3B3;
+  opacity: 0.5;
+}
+
+.card--unavailable .card__label {
+  background-color: #B3B3B3;
+}
+
+.card--unavailable .card__buy {
+  color: #FFFF66;
 }
